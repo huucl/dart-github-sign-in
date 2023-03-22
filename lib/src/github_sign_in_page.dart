@@ -55,7 +55,7 @@ class _GitHubSignInPageState extends State<GitHubSignInPage> {
               Navigator.of(context).pop(
                 Exception(Uri.parse(url).queryParameters["error"]),
               );
-            } else if (url.startsWith(widget.redirectUrl)) {
+            } else if (Uri.decodeFull(url).toString().contains(widget.redirectUrl)) {
               Navigator.of(context).pop(
                   url.replaceFirst("${widget.redirectUrl}?code=", "").trim());
             }
